@@ -54,27 +54,14 @@ class Department : Library
             }
         }
 
-        if (found!=true)
+        if (found != true)
         {
             Console.WriteLine("No matching books found.");
         }
     }
 
     // In composition, books will be destroyed with the department
-    public override void Delete(string bookOrAuthorName)
-    {
-        var bookToRemove = bookList.Find(b => b.NameOfBook.Contains(bookOrAuthorName) || b.NameOfAuthor.Contains(bookOrAuthorName));
 
-        if (bookToRemove != null)
-        {
-            bookList.Remove(bookToRemove);  // The Book is removed, and its lifecycle is tied to the department
-            Console.WriteLine($"Removed book: {bookToRemove.NameOfBook} by {bookToRemove.NameOfAuthor}.");
-        }
-        else
-        {
-            Console.WriteLine($"No book found to delete with the name or author: {bookOrAuthorName}");
-        }
-    }
 
     public override void DisplayBooks()
     {
@@ -92,16 +79,7 @@ class Department : Library
         }
     }
 
-    // The department destructor will clean up the list of books (if necessary, depending on your design)
-    //~Department()
-    //{
-    //    // Destructor: When the Department is destroyed, all associated Books will be cleaned up.
-    //    bookList.Clear();
-    //}
 }
-
-
-// {"hussein",Library l }
 
 
 class DepartmentFactory
@@ -130,13 +108,12 @@ class Program
             Console.WriteLine("\nChoose an option:");
             Console.WriteLine("1. Add a Book");
             Console.WriteLine("2. Search for a Book");
-            Console.WriteLine("3. Delete a Book");
-            Console.WriteLine("4. Display Books in a Department");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("3. Display Books in a Department");
+            Console.WriteLine("4. Exit");
             Console.Write("Enter choice: ");
             string choice = Console.ReadLine();
 
-            if (choice == "5")
+            if (choice == "4")
             {
                 break;
             }
@@ -162,13 +139,8 @@ class Program
                     department.Search(searchQuery);
                     break;
 
-                case "3":
-                    Console.Write("Enter book or author name to delete: ");
-                    string deleteQuery = Console.ReadLine();
-                    department.Delete(deleteQuery);
-                    break;
 
-                case "4":
+                case "3":
                     department.DisplayBooks();
                     break;
 
