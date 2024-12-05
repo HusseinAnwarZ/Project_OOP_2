@@ -20,7 +20,7 @@ abstract class Library
 {
     public abstract void Add(string bookName, string authorName);
     public abstract void Search(string bookOrAuthorName);
-    public abstract void Delete(string bookOrAuthorName);
+    
     public abstract void DisplayBooks();
 }
 
